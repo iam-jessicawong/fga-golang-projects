@@ -6,6 +6,9 @@ Make simple rest api for books item with method:
 - update book
 - delete book
 
+## Postman Documentation
+https://documenter.getpostman.com/view/18726863/2s93RL2c2y
+
 ## Output
 ### Get All Books
 ![Get All Books](assets/GET.png)
