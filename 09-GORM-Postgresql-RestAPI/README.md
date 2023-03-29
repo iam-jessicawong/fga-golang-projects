@@ -18,7 +18,7 @@ host     = "localhost"
 port     = 5432
 user     = "postgres"
 password = ""
-dbname   = "simple_books_api"
+dbname   = "gorm_challenge"
 ```
 
 ### Run
