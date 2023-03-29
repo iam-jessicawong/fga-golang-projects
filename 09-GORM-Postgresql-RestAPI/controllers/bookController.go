@@ -52,9 +52,8 @@ func CreateBook(ctx *gin.Context) {
 	}
 
 	// trim space from input
-	newBook.Title = strings.TrimSpace(newBook.Title)
+	newBook.Name_Book = strings.TrimSpace(newBook.Name_Book)
 	newBook.Author = strings.TrimSpace(newBook.Author)
-	newBook.Description = strings.TrimSpace(newBook.Description)
 
 	if err := db.Create(&newBook).Error; err != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"message": err.Error()})
@@ -86,11 +85,10 @@ func UpdateBook(ctx *gin.Context) {
 	updatedBook := models.Book{}
 	err := ctx.ShouldBindJSON(&updatedBook)
 	// trim space from input
-	updatedBook.Title = strings.TrimSpace(updatedBook.Title)
+	updatedBook.Name_Book = strings.TrimSpace(updatedBook.Name_Book)
 	updatedBook.Author = strings.TrimSpace(updatedBook.Author)
-	updatedBook.Description = strings.TrimSpace(updatedBook.Description)
 
-	if err != nil || len(updatedBook.Title) < 2 || len(updatedBook.Author) < 2 || len(updatedBook.Description) < 5 {
+	if err != nil || len(updatedBook.Name_Book) < 2 || len(updatedBook.Author) < 2 {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"message": "invalid inputs, please recheck your inputs",
 		})
@@ -105,6 +103,7 @@ func UpdateBook(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("book with id %v successfully updated", bookID),
+		"data":    &book,
 	})
 }
 
@@ -128,6 +127,6 @@ func DeleteBook(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
-		"message": fmt.Sprintf("book with id %v has been successfully deleted", bookID),
+		"message": "Book deleted successfully",
 	})
 }

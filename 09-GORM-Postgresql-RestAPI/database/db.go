@@ -13,7 +13,7 @@ var (
 	port     = 5432
 	user     = "postgres"
 	password = "root"
-	dbname   = "simple_books_api"
+	dbname   = "gorm_challenge"
 	db       *gorm.DB
 	err      error
 )

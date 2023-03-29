@@ -27,7 +27,7 @@ go run main.go
 ```
 
 ## Documentation
-https://documenter.getpostman.com/view/18726863/2s93RMVvWF
+https://documenter.getpostman.com/view/18726863/2s93RTPrWr
 
 ## Output
 ### Get All Books
