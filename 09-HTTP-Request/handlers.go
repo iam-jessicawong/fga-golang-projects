@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io"
 	"log"
 	"net/http"
 
@@ -39,14 +38,16 @@ func PostRequest() {
 	defer res.Body.Close()
 
 	// read response body
-	body, err := io.ReadAll(res.Body)
-	// err = json.NewDecoder(res.Body).Decode(&result)
+	result := Data{}
+	err = json.NewDecoder(res.Body).Decode(&result)
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
 
+	resJson, _ := json.MarshalIndent(result, "", " ")
+
 	// print response result
-	fmt.Println(string(body))
+	fmt.Println(string(resJson))
 	fmt.Println("status water:", statusWater)
 	fmt.Println("status wind:", statusWind)
 }
